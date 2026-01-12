@@ -213,7 +213,7 @@ const handleProfileFormSubmit = (evt) => {
 // Редактирование аватара
 const handleAvatarFromSubmit = (evt) => {
   evt.preventDefault();
-  cardForm.querySelector('.popup__button').textContent = 'Сохранение...'
+  avatarForm.querySelector('.popup__button').textContent = 'Сохранение...'
   setUserAvatar({
     avatar: avatarInput.value
   })
