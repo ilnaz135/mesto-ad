@@ -225,7 +225,7 @@ const handleAvatarFromSubmit = (evt) => {
     console.log(err);
   })
   .finally(() => {
-    cardForm.querySelector('.popup__button').textContent = 'Сохранить'
+    avatarForm.querySelector('.popup__button').textContent = 'Сохранить'
   })
 };
 
