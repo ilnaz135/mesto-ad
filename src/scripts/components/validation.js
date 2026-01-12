@@ -63,8 +63,8 @@ export const enableValidation = (validationSettings) => {
    const formList = Array.from(document.querySelectorAll(formSelector));
    
    formList.forEach((formElement) => {
-      const submitButton = formElement.querySelector(submitButtonSelector);
       const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+      const submitButton = formElement.querySelector(submitButtonSelector);
       toggleButtonState(inputList, submitButton, inactiveButtonClass);
       setEventListeners(formElement, inputSelector, inputErrorClass, errorClass, submitButton, inactiveButtonClass);
    });
@@ -72,8 +72,8 @@ export const enableValidation = (validationSettings) => {
 
 // Отключает валидацию форм
 export const clearValidation = (formElement, validationSettings) => {
-   const {_, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass} = validationSettings;
-   const submitButton = document.querySelector(submitButtonSelector)
+   const {inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass} = validationSettings;
+   const submitButton = formElement.querySelector(submitButtonSelector)
    const inputList = Array.from(formElement.querySelectorAll(inputSelector));
    disableSubmitButton(submitButton, inactiveButtonClass)
    inputList.forEach((inputElement) => {
@@ -81,5 +81,5 @@ export const clearValidation = (formElement, validationSettings) => {
       disableSubmitButton(submitButton, inactiveButtonClass)
    })
 
-   toggleButtonState(inputList, submitButton, inactiveButtonClass);
+   disableSubmitButton(submitButton, inactiveButtonClass);
 }
