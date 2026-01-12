@@ -210,9 +210,10 @@ const handleProfileFormSubmit = (evt) => {
   })
 };
 
-// Создание аватара
+// Редактирование аватара
 const handleAvatarFromSubmit = (evt) => {
   evt.preventDefault();
+  cardForm.querySelector('.popup__button').textContent = 'Сохранение...'
   setUserAvatar({
     avatar: avatarInput.value
   })
@@ -222,6 +223,9 @@ const handleAvatarFromSubmit = (evt) => {
   })
   .catch((err) => {
     console.log(err);
+  })
+  .finally(() => {
+    cardForm.querySelector('.popup__button').textContent = 'Сохранить'
   })
 };
 
