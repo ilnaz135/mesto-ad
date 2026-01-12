@@ -11,4 +11,4 @@ https://github.com/ilnaz135/mesto-ad
 
 ## Ссылка на опубликованный проект
 
-🔗 https://ilnaz123.github.io/mesto-ad/
+🔗 https://ilnaz135.github.io/mesto-prod/
