@@ -16,10 +16,21 @@ const hideInputError = (formElement, inputElement, inputErrorClass, errorClass) 
 
 // Проверяет инпут на валидность
 const checkInputValidity = (formElement, inputElement, inputErrorClass, errorClass) => {
-   inputElement.validity.patternMismatch ? inputElement.setCustomValidity(inputElement.dataset.errorMessage)
-   : inputElement.setCustomValidity(""); 
-   !inputElement.validity.valid ? showInputError(formElement, inputElement , inputErrorClass, inputElement.validationMessage, errorClass): hideInputError(formElement, inputElement, inputErrorClass, errorClass);
-}
+  if (inputElement.validity.patternMismatch) {
+    inputElement.setCustomValidity(
+      inputElement.validity.tooShort? `Поле должно содержать от ${inputElement.getAttribute('minlength')} до ${inputElement.getAttribute('maxlength')} символов.` : inputElement.dataset.errorMessage
+    );
+  } else {
+    inputElement.setCustomValidity('');
+  }
+
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputErrorClass, inputElement.validationMessage, errorClass);
+    return;
+  }
+
+  hideInputError(formElement, inputElement, inputErrorClass, errorClass);
+};
 
 // Проверяет валидны ли оба инпута одновременно
 const hasInvalidInput = (inputList) => {
