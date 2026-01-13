@@ -162,8 +162,7 @@ const handleDeleteCard = (cardElement, cardId) => {
     evt.preventDefault()
     cardDeleteForm.querySelector('.popup__button').textContent = 'Удаление...'
     deleteUserCard(cardId)
-    .then((response) => {
-      console.log(response.message);
+    .then(() => {
       cardElement.remove();
       closeModalWindow(cardDeleteModalWindow)
     })
@@ -180,8 +179,8 @@ const handleDeleteCard = (cardElement, cardId) => {
 const handleLikeCard = (cardElement, cardId) => {
   const isCardLiked = cardElement.classList.contains('card__like-button_is-active')
   changeLikeCardStatus(cardId, isCardLiked)
-  .then((response) => {
-    cardElement.parentElement.querySelector('.card__like-count').textContent = response.likes.length || '';
+  .then((data) => {
+    cardElement.parentElement.querySelector('.card__like-count').textContent = data.likes.length || '';
     cardElement.classList.toggle('card__like-button_is-active')
   })
   .catch((err) => {
