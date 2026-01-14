@@ -40,7 +40,7 @@ export const setUserInfo = ({ name, about }) => {
 
 // Добавляем аватар пользователя на странице с сервера
 export const setUserAvatar = ({ avatar }) => {
-  return fetch(`${config.baseUrl}/users/me`, {
+  return fetch(`${config.baseUrl}/users/me/avatar`, {
     method: "PATCH",
     headers: config.headers,
     body: JSON.stringify({
@@ -75,4 +75,5 @@ export const changeLikeCardStatus = (cardID, isLiked) => {
     method: isLiked ?  "DELETE" : "PUT",
     headers: config.headers,
   }).then((res) => getResponseData(res));
+
 };
